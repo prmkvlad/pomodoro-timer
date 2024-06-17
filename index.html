@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pomodoro Timer</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="timer">
+		<div class="timer__container container">
+			<h1 class="timer__title">Pomodoro Timer</h1>
+			<p class="timer__string" id="timerString">25:00</p>
+			<div class="timer__button-wrapper">
+				<button class="timer__button" id="start">Start</button>
+				<button class="timer__button" id="pause">Pause</button>
+				<button class="timer__button" id="reset">Reset</button>
+			</div>
+		</div>
+	</div>
+	<div class="tasks">
+		<div class="tasks__container container">
+			<h2 class="tasks__title">Tasks</h2>
+			<div class="tasks__form">
+				<input class="task__description" id="taskDescriptionInput" name="tastDescription" type="text"
+					placeholder="Enter a task..." maxlength="55" autocomplete="off">
+				<button class="tasks__addBtn" id="taskAddBtn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M15 12H12M12 12H9M12 12V9M12 12V15M17 21H7C4.79086 21 3 19.2091 3 17V7C3 4.79086 4.79086 3 7 3H17C19.2091 3 21 4.79086 21 7V17C21 19.2091 19.2091 21 17 21Z"
+							stroke="#000000" stroke-width="2" stroke-linecap="round" />
+					</svg></button>
+			</div>
+			<div class="tasks__body">
+				<ul class="tasks__list" id="taskList">
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
