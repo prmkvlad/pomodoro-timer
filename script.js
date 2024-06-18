@@ -1,3 +1,27 @@
+// Sounds
+
+const bellSound = new Audio('./sounds/bell.wav');
+const startSound = new Audio('./sounds/start.wav');
+const stopSound = new Audio('./sounds/stop.wav');
+const resetSound = new Audio('./sounds/reset.wav');
+
+// Пример использования звуков
+function playBell() {
+	bellSound.play();
+}
+
+function playStart() {
+	startSound.play();
+}
+
+function playStop() {
+	stopSound.play();
+}
+
+function playReset() {
+	resetSound.play();
+}
+
 // Timer
 
 const timerEl = document.getElementById('timerString');
@@ -13,26 +37,32 @@ function updateTimer() {
 	let seconds = timeLeft % 60;
 	let formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-	timerEl.innerHTML = formattedTime;
 	document.title = `${formattedTime} - Time to focus!`;
+	timerEl.innerHTML = formattedTime;
 }
 
 function startTimer() {
+	playStart();
 	interval = setInterval(() => {
-		timeLeft--;
+		--timeLeft;
 		updateTimer();
-		if (timeLeft === -1) {
-			alert("Time's up!");
-			resetTimer();
+		if (timeLeft === 0) {
+			playBell();
+			setTimeout(() => {
+				alert("Time's up!");
+				resetTimer();
+			}, 0)
 		}
 	}, 1000);
 }
 
 function pauseTimer() {
+	playStop();
 	clearInterval(interval);
 }
 
 function resetTimer() {
+	playReset();
 	clearInterval(interval);
 	timeLeft = 1500;
 	updateTimer();
