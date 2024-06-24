@@ -1,3 +1,43 @@
+// Tabs
+
+let interval, defaultTime;
+let timeLeft = 1500;
+
+function openTimer(evt, timerType) {
+	const titles = {
+		pomodoroTab: 'Pomodoro Timer',
+		sBreakTab: 'Short Break Timer',
+		lBreakTab: 'Long Break Timer'
+	};
+
+	const times = {
+		pomodoroTab: 1500,
+		sBreakTab: 300,
+		lBreakTab: 900
+	};
+
+	const backgroundColors = {
+		pomodoroTab: 'rgb(186, 73, 73)',
+		sBreakTab: 'rgb(57, 112, 151)',
+		lBreakTab: 'rgb(57, 112, 151)'
+	}
+
+	defaultTime = times[timerType];
+	timeLeft = times[timerType];
+	resetTimer(times[timerType]);
+
+	document.getElementById('timerTitle').textContent = titles[timerType];
+	document.getElementById('timerString').textContent = `${Math.floor(times[timerType] / 60).toString().padStart(2, "0")}:00`;
+
+	const tablinks = document.getElementsByClassName('timer__tablink');
+	for (let i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(' active', '');
+	}
+
+	evt.currentTarget.className += ' active';
+	document.body.style.backgroundColor = backgroundColors[timerType];
+}
+
 // Sounds
 
 const bellSound = new Audio('./sounds/bell.wav');
@@ -28,9 +68,6 @@ const timerEl = document.getElementById('timerString');
 const startBtn = document.getElementById('start');
 const pauseBtn = document.getElementById('pause');
 const resetBtn = document.getElementById('reset');
-
-let interval;
-let timeLeft = 1500;
 
 function updateTimer() {
 	let minutes = Math.floor(timeLeft / 60);
@@ -64,7 +101,7 @@ function pauseTimer() {
 function resetTimer() {
 	playReset();
 	clearInterval(interval);
-	timeLeft = 1500;
+	timeLeft = defaultTime;
 	updateTimer();
 }
 

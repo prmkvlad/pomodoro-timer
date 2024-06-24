@@ -11,12 +11,22 @@
 <body>
 	<div class="timer">
 		<div class="timer__container container">
-			<h1 class="timer__title">Pomodoro Timer</h1>
-			<p class="timer__string" id="timerString">25:00</p>
-			<div class="timer__button-wrapper">
-				<button class="timer__button" id="start">Start</button>
-				<button class="timer__button" id="pause">Pause</button>
-				<button class="timer__button" id="reset">Reset</button>
+			<div class="timer__inner">
+				<div class="timer__tab">
+					<button class="timer__tablink" id="defaultOpen"
+						onclick="openTimer(event, 'pomodoroTab')">Pomodoro</button>
+					<button class="timer__tablink" onclick="openTimer(event, 'sBreakTab')">Short Break</button>
+					<button class="timer__tablink" onclick="openTimer(event, 'lBreakTab')">Long Break</button>
+				</div>
+				<div class="timer__tabcontent" id="timerContent">
+					<h1 class="timer__title" id="timerTitle">Pomodoro Timer</h1>
+					<p class="timer__string" id="timerString">25:00</p>
+				</div>
+				<div class="timer__button-wrapper">
+					<button class="timer__button" id="start">Start</button>
+					<button class="timer__button" id="pause">Pause</button>
+					<button class="timer__button" id="reset">Reset</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -40,6 +50,7 @@
 		</div>
 	</div>
 	<script src="script.js"></script>
+	<script>document.getElementById("defaultOpen").click();</script>
 </body>
 
 </html>

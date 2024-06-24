@@ -19,6 +19,7 @@ body {
 	justify-content: center;
 	background-color: rgb(186, 73, 73);
 	color: white;
+	transition: background-color 0.7s ease;
 }
 
 ul {
@@ -32,7 +33,8 @@ li {
 
 h1,
 h2,
-h3 {
+h3,
+p {
 	margin: 0;
 }
 
@@ -62,6 +64,7 @@ input {
 }
 
 .container {
+	max-width: 600px;
 	width: 100%;
 	padding-inline: 15px;
 	margin-inline: auto;
@@ -71,23 +74,42 @@ input {
 	margin-block: 60px;
 }
 
-.timer__container {
-	max-width: 400px;
+.timer__inner {
+	display: flex;
+	flex-direction: column;
+	row-gap: 30px;
+	max-width: 500px;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.12);
 	border-radius: 8px;
-	padding-block: 40px;
+	padding: 40px 25px;
+}
+
+.timer__tab .timer__tablink.active {
+	background-color: rgba(0, 0, 0, 0.15);
+}
+
+.timer__tablink {
+	color: inherit;
+	padding: 6px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.timer__tabcontent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 12px;
 }
 
 .timer__title {
-	font-size: 36px;
-	margin-block: 0;
+	font-size: clamp(1.5rem, 0.6429rem + 4.2857vw, 2.25rem);
 }
 
 .timer__string {
-	font-size: 82px;
+	font-size: clamp(4rem, 2.7143rem + 6.4286vw, 5.125rem);
 	font-weight: 600;
-	margin-block: 30px;
 }
 
 .timer__button-wrapper {
@@ -98,7 +120,7 @@ input {
 }
 
 .timer__button {
-	font-size: 18px;
+	font-size: clamp(1rem, 0.8571rem + 0.7143vw, 1.125rem);
 	padding: 10px 24px;
 	color: currentColor;
 	border-radius: 8px;
@@ -132,7 +154,6 @@ input {
 }
 
 .tasks {
-	max-width: 600px;
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -147,6 +168,7 @@ input {
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: 20px;
+	column-gap: 8px;
 }
 
 .tasks__addBtn {
